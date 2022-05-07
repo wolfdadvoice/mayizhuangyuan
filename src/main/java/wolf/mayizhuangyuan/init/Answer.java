@@ -42,7 +42,11 @@ public class Answer {
         driver.get(answerUrl);
         String date = driver.findElement(By.xpath("//tbody/tr[2]/td[1]")).getText();
         LocalDateTime localDateTime = LocalDateTime.now();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+        int day = localDateTime.getDayOfMonth();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M月dd日");
+        if (day < 10) {
+            dateTimeFormatter = DateTimeFormatter.ofPattern("M月d日");
+        }
         String now = dateTimeFormatter.format(localDateTime);
         if (date.equals(now)) {
             System.out.println("日期:" + date);
