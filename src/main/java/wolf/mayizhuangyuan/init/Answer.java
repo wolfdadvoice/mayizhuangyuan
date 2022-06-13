@@ -37,6 +37,7 @@ public class Answer {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("headless");
         chromeOptions.addArguments("disable-gpu");
+        chromeOptions.addArguments("no-sandbox");
         //第一个参数：表示服务器的地址。第二个参数：表示预期的执行对象，其他的浏览器都可以以此类推`
         WebDriver driver = new RemoteWebDriver(new URL(url), chromeOptions);
         driver.get(answerUrl);
